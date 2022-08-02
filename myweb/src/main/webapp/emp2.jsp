@@ -67,6 +67,12 @@ table{
 						</table>
 				</fieldset>
 			</form>
+		</article>
+		<article>
+			<fieldset>
+				<legend>사원내역</legend>
+				<h3 style="text-align:center;"><a href="empList2.jsp">모든 사원 내역보기</a></h3>
+			</fieldset>
 		</article>	
 	</section>
 <%@include file="/footer.jsp" %>
