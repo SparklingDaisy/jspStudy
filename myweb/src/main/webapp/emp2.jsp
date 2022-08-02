@@ -62,7 +62,7 @@ table{
 							<tr>
 								<th>사원이름</th>
 								<td><input type="text" name="name">
-								<input type="submit" name="사원삭제"></td>
+								<input type="submit" value="사원삭제"></td>
 							</tr>
 						</table>
 				</fieldset>
