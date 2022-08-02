@@ -6,8 +6,8 @@
 	<h1>JSP Study Site</h1>
 	<nav>
 		<ul>
-			<li><a href="http://localhost:9090/myweb/index.jsp">메인</a></li>
-			<li><a href="http://localhost:9090/myweb/myProfile.jsp">개발자소개</a></li>
+			<li><a href="/myweb">메인</a></li>
+			<li><a href="/myweb/myProfile.jsp">개발자소개</a></li>
 			<li>자유게시판</li>
 			<li>이미지갤러리</li>
 			<li>방명록</li>

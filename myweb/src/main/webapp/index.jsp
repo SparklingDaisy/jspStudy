@@ -22,6 +22,7 @@
 				<li><a href="formTest.jsp">폼 테스트</a></li>
 				<li><a href="cal.jsp">사칙계산기</a></li>
 				<li><a href="emp.jsp">사원관리프로그램(모델1기본형)</a></li>
+				<li><a href="emp2.jsp">사원관리프로그램(모델1빈즈방식)</a></li>
 			</ul>
 		</article>
 	</section>
