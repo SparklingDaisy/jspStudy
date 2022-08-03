@@ -70,10 +70,38 @@ table{
 		</article>
 		<article>
 			<fieldset>
-				<legend>사원내역</legend>
+				<legend>모든 사원내역</legend>
 				<h3 style="text-align:center;"><a href="empList2.jsp">모든 사원 내역보기</a></h3>
 			</fieldset>
-		</article>	
+		</article>
+		<article>
+			<fieldset>
+				<form name="empSearch" action="empSearch2_ok.jsp">
+			 		<legend>사원검색</legend>
+					<table>
+						<tr>
+							<th>사원이름</th>
+							<td><input type="text" name="name">
+							<input type="submit" name="사원검색"></td>
+						</tr>
+					</table>
+				</form>		
+			</fieldset>
+		</article>
+		<article>
+			<fieldset>
+				<form name="empUpdate" action="empUpdate2.jsp">
+			 		<legend>사원정보수정</legend>
+					<table>
+						<tr>
+							<th>사원번호</th>
+							<td><input type="text" name="idx">
+							<input type="submit" name="사원검색"></td>
+						</tr>
+					</table>
+				</form>		
+			</fieldset>
+		</article>		
 	</section>
 <%@include file="/footer.jsp" %>
 </body>

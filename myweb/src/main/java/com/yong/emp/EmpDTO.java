@@ -11,6 +11,14 @@ public class EmpDTO {
 			System.out.println("EmpDTO() 생성자 호출됨~");
 		}
 
+		public EmpDTO(int idx, String name, String email, String dept) {
+			super();
+			this.idx = idx;
+			this.name = name;
+			this.email = email;
+			this.dept = dept;
+		}
+
 		public int getIdx() {
 			return idx;
 		}

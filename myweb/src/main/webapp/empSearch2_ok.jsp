@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.yong.emp.*" %>
+
+<jsp:useBean id="edto" class="com.yong.emp.EmpDTO"></jsp:useBean>
+<jsp:setProperty property="*" name="edto"/>
 <jsp:useBean id="edao" class="com.yong.emp.EmpDAO"></jsp:useBean>
 
    
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +50,7 @@ table th{
 				</thead>
 				<tbody>
 				<%
-				EmpDTO dtos[]=edao.empList();
+				EmpDTO dtos[]=edao.empSearch(edto);
 				
 				if(dtos==null||dtos.length==0){    //객체가 null이거나 dto의 길이가 0인 경우 출력할게 없음
 					%>

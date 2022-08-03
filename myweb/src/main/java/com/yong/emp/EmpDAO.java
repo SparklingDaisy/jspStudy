@@ -76,38 +76,148 @@ public class EmpDAO {
 			
 		}
 	
-	/**사원 모두보기 관련 메서드*/
-	public void empList() {
-		ArrayList<EmpDTO> list = new ArrayList<>();
+	/**모든 사원내역 보기 메서드*/
+	public EmpDTO[] empList() {
 		
 		try {
-		dbConnect();
-		String sql="select * from employee order by idx desc"; //데이터베이스는 순서를 보장하지 않음
-		PreparedStatement ps=conn.prepareStatement(sql);
-		ResultSet rs=ps.executeQuery();
-	
-		if(rs.next()){
-			do{
-				EmpDTO emp = new EmpDTO();
-				emp.setIdx(rs.getInt("idx"));
-				emp.setName(rs.getString("name"));
-				emp.setEmail(rs.getString("email"));
-				emp.setDept(rs.getString("dept"));
-				list.add(emp);
+			dbConnect();
+			String sql="select * from employee order by idx desc";
+			ps=conn.prepareStatement(sql);
+			rs=ps.executeQuery();
 			
-			}while(rs.next());
-
+			Vector<EmpDTO> v=new Vector<EmpDTO>();
+			while(rs.next()) {
+				int idx=rs.getInt("idx");
+				String name=rs.getString("name");
+				String email=rs.getString("email");
+				String dept=rs.getString("dept");
+				
+				EmpDTO dto=new EmpDTO(idx, name, email, dept);
+				v.add(dto);		
+				
+			}
+			
+			EmpDTO dtos[]=new EmpDTO[v.size()];
+			v.copyInto(dtos);
+			return dtos;
+			
 		}catch(Exception e) {
 			e.printStackTrace();
+			return null; //잘못 되었을 경우 값이 없다~
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(ps!=null)ps.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e2) {}
+		}
+		
+	}
+	
+	/**사원이름 검색 관련 메서드*/
+	public EmpDTO[] empSearch(EmpDTO dto) {
+		
+		try {
+			
+			dbConnect();
+			String sql="select * from employee where name=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, dto.getName());
+			rs=ps.executeQuery();
+			
+			Vector<EmpDTO> v=new Vector<EmpDTO>();
+			while(rs.next()) {
+				int idx=rs.getInt("idx");
+				String name=rs.getString("name");
+				String email=rs.getString("email");
+				String dept=rs.getString("dept");
+				
+				EmpDTO dtoArr=new EmpDTO(idx, name, email, dept);
+				v.add(dtoArr);		
+				
+			}
+			
+			EmpDTO dtos[]=new EmpDTO[v.size()];
+			v.copyInto(dtos);
+			return dtos;
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null; //잘못 되었을 경우 값이 없다~
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(ps!=null)ps.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e2) {}
+		}
+		
+	}
+	
+	/**사원번호로 검색 관련 메서드*/
+	public EmpDTO[] empSearchIdx(EmpDTO dto) {
+		
+		try {
+			dbConnect();
+			String sql="select * from employee where idx=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, dto.getIdx());
+			rs=ps.executeQuery();
+			
+			Vector<EmpDTO> v=new Vector<EmpDTO>();
+			while(rs.next()) {
+				int idx=rs.getInt("idx");
+				String name=rs.getString("name");
+				String email=rs.getString("email");
+				String dept=rs.getString("dept");
+				
+				EmpDTO dto2=new EmpDTO(idx, name, email, dept);
+				v.add(dto2);		
+				
+			}
+			
+			EmpDTO dtos[]=new EmpDTO[v.size()];
+			v.copyInto(dtos);
+			return dtos;
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null; //잘못 되었을 경우 값이 없다~
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(ps!=null)ps.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e2) {}
+		}
+		
+	}
+	
+	/**사원정보 수정 관련 메서드*/
+	public int empUpdate(EmpDTO dto) {
+		
+		try {
+			dbConnect();
+			String sql="update employee set name=?,email=?,dept=? where idx=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1,dto.getName());
+			ps.setString(2,dto.getEmail());
+			ps.setString(3,dto.getDept());
+			ps.setInt(4, dto.getIdx());
+			int count=ps.executeUpdate();
+			return count;
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			return -1; //잘못 되었을 경우 값이 없다~
 		}finally {
 			try {
 				if(ps!=null)ps.close();
 				if(conn!=null)conn.close();
-				
-			}catch(Exception e2){
-				
-			}
+			}catch(Exception e2) {}
 		}
+		
 	}
+	
 
-
+}
