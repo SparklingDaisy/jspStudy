@@ -8,7 +8,6 @@ public class EmpDAO {
 	private Connection conn;
 	private PreparedStatement ps;
 	private ResultSet rs;
-	private ArrayList dept=new ArrayList();
 	
 	public EmpDAO() {
 		System.out.println("EmpDAO()생성자 호출됨~");
@@ -206,6 +205,7 @@ public class EmpDAO {
 			ps.setInt(4, dto.getIdx());
 			int count=ps.executeUpdate();
 			return count;
+			
 			
 		}catch(Exception e) {
 			e.printStackTrace();
