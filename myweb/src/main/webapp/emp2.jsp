@@ -82,7 +82,7 @@ table{
 						<tr>
 							<th>사원이름</th>
 							<td><input type="text" name="name">
-							<input type="submit" name="사원검색"></td>
+							<input type="submit" name="사원검색" value="검색"></td>
 						</tr>
 					</table>
 				</form>		
@@ -96,7 +96,7 @@ table{
 						<tr>
 							<th>사원번호</th>
 							<td><input type="text" name="idx">
-							<input type="submit" name="사원검색"></td>
+							<input type="submit" name="사원검색" value="검색"></td>
 						</tr>
 					</table>
 				</form>		
