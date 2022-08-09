@@ -5,93 +5,77 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/mainLayout.css">
+<link rel="stylesheet" type="text/css" href="../css/mainLayout.css">
  <head>
   <meta charset="UTF-8">
   <title>Document</title>
   <style>
-  
-  table{
-	border-spacing:0px;
+h1{
+	text-align:center;
+}
+
+fieldset{
+	width:500px;
 	margin:0px auto;
-  }
-  
-  h1{
-  	text-align:center;
+}
+
+fieldset li{
+   list-style-type: none;
+}
+
+fieldset li label{
+   width: 80px;
+   float: left;
   }
 
-  td{
-	margin:0px auto;
-  }
+fieldset div{
+	text-align:center;
+}
 
-  .table{
-	width:50%;
-	border-bottom:1px solid red;
-	
-  }
-
-  .firTd{
-  	width:10%;
-	border-top:1px solid red;
-  }
-  
-  .fin{
-  	border-bottom:1px solid red; 
-  	border-top:1px solid red;
-  }
-
-  </style>
+ </style>
   <script>
- function openPopup(){
-	 
-	 window.open("idCheck.jsp",'idCheck',"width=500,height=500");
+ function openIdCheck(){
+	 window.open('idCheck.jsp','idCheck','width=450,height=150');
  }
-
   </script>
  </head>
  <body>
+ <%@include file="../header.jsp" %>
 	<section>
 		<article>
-			<form name="memberJoin" action="memberJoin_ok.jsp">
-				<h1>회원가입</h1>
-				<table>
-					<tr>
-						<td class="firTd"><b>ID</b></td>
-						<td class="firTd"><input type="text" name="id" id="origin" readonly> 
-						<input type="button" value="Check ID" onclick="openPopup();"></td>
-					</tr>
-					<tr>
-						<td class="firTd"><b>비밀번호</b></td>
-						<td class="fin"><input type="password" name="pwd">
-					</tr>
-
-					<tr>
-						<td class="firTd"><b>이름</b></td>
-						<td class="table"><input type="text" name="name">
-					</tr>
-
-					<tr>
-						<td class="firTd"><b>E-mail</b></td>
-						<td class="table"><input type="text" name="email"></td>
-					</tr>
-					<tr>
-						<td class="firTd"><b>전화번호</b></td>
-						<td class="table"><input type="text" name="tel"></td>
-					</tr>
-					<tr>
-						<td class="fin"><b>주소</b></td>
-						<td class="table"><input type="text" name="addr"></td>
-					</tr>
-
-				</table>
-				<table>
-					<tr>
-						<td><input type="submit" name="memberJoin" value="회원가입"></td>
-						<td><input type="reset" value="다시작성"></td>
-					</tr>
-				</table>
+			<h1>회원가입</h1>
+				<form name="memberJoin" action="memberJoin_ok.jsp">
+				<fieldset>
+					<legend>회원가입</legend>
+					<ul>
+						<li><label>ID</label>
+							<input type="text" name="id" readonly>
+							<input type="button" value="중복검사" onclick="openIdCheck();">
+						</li>
+						<li><label>Password</label>
+							<input type="password" name="pwd">
+						</li>
+						<li><label>Name</label>
+							<input type="text" name="name">
+						</li>
+						<li><label>E-mail</label>
+							<input type="text" name="email">
+						</li>
+						<li><label>Telephone</label>
+							<input type="text" name="tel">
+						</li>
+						<li><label>Address</label>
+							<input type="text" name="addr">
+						</li>					
+					</ul>
+					<div>
+						<input type="submit" value="회원가입">
+						<input type="reset" value="다시작성">
+					</div>
+				</fieldset>
 			</form>
 		</article>
 	</section>
+<%@include file="../footer.jsp" %>
  </body>
 </html>

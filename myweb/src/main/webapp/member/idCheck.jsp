@@ -9,19 +9,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-<section>
-	<article>
+	<body>
 		<form name="idCheck" action="idCheck_ok.jsp">
 			<fieldset>
-				<legend>ID체크</legend>
-				<label>ID</label>
-				<input type="text" name="id">
-				<input type="submit" value="검사">
+				<legend>아이디 중복검사</legend>
+				<table>
+					<tr>
+						<td><input type="text" name="id"></td>
+						<td><input type="submit" value="검사"></td>
+					<tr>
+				</table>
 			</fieldset>
 		</form>
-	</article>
-</section>
-
-</body>
+	</body>
 </html>

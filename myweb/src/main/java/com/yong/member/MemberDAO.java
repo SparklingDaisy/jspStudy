@@ -1,14 +1,20 @@
 package com.yong.member;
 
 import java.sql.*;
+import java.sql.Date;
+import java.util.*;
 
-import com.yong.emp.EmpDTO;
+import com.yong.member.MemberDTO;
 
 public class MemberDAO {
 	
 	private Connection conn;
 	private PreparedStatement ps;
 	private ResultSet rs;
+	
+	public MemberDAO() {
+	
+	}
 	
 	/**DB연동 메서드*/
 	public void dbConnect() {
@@ -22,43 +28,6 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 	}
-	
-	/**ID중복검사 메서드*/
-	public int idCheck(String id) {
-		
-		int result=-1;
-		
-		try {
-			dbConnect();
-			String sql="select * from jsp_member where id=?";
-			ps=conn.prepareStatement(sql);
-			ps.setString(1, id);
-			
-			rs=ps.executeQuery();
-			if(rs.next()) {
-				result=1;
-				System.out.println("리절트는"+result);
-			}else {
-				result=0;
-				System.out.println("결과는"+result);
-			}	
-				
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-			return -1; //잘못되면 음수를 돌려줌
-		}finally {
-			try {
-				if(ps!=null)ps.close(); //null인 경우 에러가 발생하므로 미리 조건지정해줌
-				if(conn!=null)conn.close();
-				
-			}catch(Exception e2) {
-				}
-			}
-		
-		return result;
-			
-		}
 		
 	
 	/**회원가입 메서드*/
@@ -91,6 +60,69 @@ public class MemberDAO {
 			
 		}
 	
+	/**ID중복검사 메서드*/
+	public boolean idCheck(String id) {
+		
+		try {
+			dbConnect();
+			String sql="select id from jsp_member where id=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, id);
+			rs=ps.executeQuery();
+			return rs.next();				
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			return false;
+
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(ps!=null)ps.close(); //null인 경우 에러가 발생하므로 미리 조건지정해줌
+				if(conn!=null)conn.close();
+				
+			}catch(Exception e2) {
+				}
+			}
+			
+		}
 	
+	/**회원정보검색 메서드*/
+	public ArrayList<MemberDTO> memberFind(String fkey,String fvalue){
+		
+		try {
+			dbConnect();
+			String sql="select * from jsp_member where "+fkey+"=?"; // ?인파라미터는 밸류에만 적용가능
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, fvalue);
+			rs=ps.executeQuery();
+			
+			ArrayList<MemberDTO> arr=new ArrayList<MemberDTO>();
+			while(rs.next()) {
+				int idx=rs.getInt("idx");
+				String id=rs.getString("id");
+				String pwd=rs.getString("pwd");
+				String name=rs.getString("name");
+				String email=rs.getString("email");
+				String tel=rs.getString("tel");
+				String addr=rs.getString("addr");
+				java.sql.Date joindate=rs.getDate("joindate");
+				
+				MemberDTO dto=new MemberDTO(idx, id, pwd, name, email, tel, addr, joindate);
+				arr.add(dto);
+			}
+			return arr;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(ps!=null)ps.close(); 
+				if(conn!=null)conn.close();
+			}catch(Exception e2) {}
+		}
+	}
+		
 
 }

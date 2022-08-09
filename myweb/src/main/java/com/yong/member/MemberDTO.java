@@ -1,5 +1,7 @@
 package com.yong.member;
 
+import java.sql.*;
+
 public class MemberDTO {
 
 	private int idx;
@@ -9,10 +11,39 @@ public class MemberDTO {
 	private String email;
 	private String tel;
 	private String addr;
-	private String joindate;
+
+	private Date joindate; 
+
+	/*날짜를 표현해줄때 sql패키지에 들어있는 Date로 날짜를 표현해줌
+	 * 자바는 캘린더 클래스로 사용 */
+							
 	
 	public MemberDTO() {
 		
+	}
+	
+	public MemberDTO(int idx, String id, String pwd, String name, String email, String tel, String addr,
+			Date joindate) {
+		super();
+		this.idx = idx;
+		this.id = id;
+		this.pwd = pwd;
+		this.name = name;
+		this.email = email;
+		this.tel = tel;
+		this.addr = addr;
+		this.joindate = joindate;
+	}
+	
+	public MemberDTO(int idx,String id,String name,String email,String tel,Date joindate) {
+		
+		super();
+		this.idx = idx;
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.tel = tel;
+		this.joindate = joindate;
 	}
 	
 	public String getId() {
@@ -71,14 +102,20 @@ public class MemberDTO {
 		this.addr = addr;
 	}
 
-	public String getJoindate() {
+	public Date getJoindate() {
 		return joindate;
 	}
 
-	public void setJoindate(String joindate) {
+	public void setJoindate(Date joindate) {
 		this.joindate = joindate;
 	}
 	
-	
+	public String getValue() {
+		return Value;
+	}
+
+	public void setValue(String value) {
+		Value = value;
+	}
 	
 }

@@ -14,7 +14,7 @@ function openCheck(){
 </script>
 </head>
 <body>
-<%@include file="header.jsp" %>
+<%@include file="../header.jsp" %>
 <section>
 	<article>
 		<h3 align="center">회원가입</h3>
@@ -54,6 +54,6 @@ function openCheck(){
 		</form>
 	</article>
 </section>
-<%@include file="footer.jsp" %>
+<%@include file="../footer.jsp" %>
 </body>
 </html>
