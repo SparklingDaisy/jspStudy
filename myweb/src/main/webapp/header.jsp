@@ -1,8 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<header> 
-	<div>로그인|<a href="/myweb/member/memberJoin.jsp">회원가입</a></div>
+<script>
+function openLogin(){
+	window.open('/myweb/member/login.jsp','login','width=450,height=300');
+}
+</script>
+
+<%
+String sname=(String)session.getAttribute("sname");
+%>
+
+<header>
+	<%if(sname==null||sname.equals("")){ %>
+	<div>
+		<a href="javascript:openLogin();">로그인</a>|
+		<a href="/myweb/member/memberJoin.jsp">회원가입</a>
+	</div>
+	<%	
+	}else{
+		%>
+		<div><%=sname %>님 로그인중...|<a href="/myweb/member/logout.jsp">로그아웃</a></div>
+		<%
+	}%>
 	<h1>JSP Study Site</h1>
 	<nav>
 		<ul>

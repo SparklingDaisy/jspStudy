@@ -3,18 +3,15 @@
 <%@ page import="java.net.*" %>
 <%@ page import="java.util.*" %>
 
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/mainLayout.css">
-<%String todayFin=request.getParameter("king"); %>
 <script>
 function openPopup(){
 	window.open('popup.html','popup','width=300,height=300');
-
 }
 </script>
 </head>
@@ -42,10 +39,8 @@ if(cks!=null){
 			<img src="img/main.jpg" alt="메인이미지">
 		</article>
 		<article id="subMenu">
-			<%=todayFin%>
 			<h2>아래에 메뉴가 추가됨</h2>
 			
-
 			<h3><%=lastDay %></h3>
 			<!--  -->
 			<%
