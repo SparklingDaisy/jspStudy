@@ -66,6 +66,8 @@ if(cks!=null){
 				<li><a href="emp.jsp">사원관리프로그램(모델1기본형)</a></li>
 				<li><a href="emp2.jsp">사원관리프로그램(모델1빈즈방식)</a></li>
 				<li><a href="member/memberFind.jsp?sw=1">회원 검색</a></li>
+				<li><a href="fileUpload/uploadForm.jsp">파일 업로드 테스트</a></li>
+				<li><a href="fileUpload/fileList.jsp">파일 다운로드 목록</a></li>
 			</ul>
 		</article>
 	</section>
