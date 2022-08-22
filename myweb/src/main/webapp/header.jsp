@@ -27,7 +27,7 @@ String sname=(String)session.getAttribute("sname");
 		<ul>
 			<li><a href="/myweb">메인</a></li>
 			<li><a href="/myweb/myProfile.jsp">개발자소개</a></li>
-			<li>자유게시판</li>
+			<li><a href="/myweb/bbs/bbsList.jsp">자유게시판</a></li>
 			<li><a href="/myweb/imgGallery/imgGalleryList.jsp">이미지갤러리</a></li>
 			<li>방명록</li>
 		</ul>
