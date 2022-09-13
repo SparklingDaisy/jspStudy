@@ -1,0 +1,51 @@
+RequestDispatcher 객체는 전가 준비를 하는 객체
+
+ex)
+RequestDispatcher disp=req.getRequestDispatcher(gopage);
+disp.forward(req, resp);
+
+web.xml에 서블릿 등록 후 사용해야함
+
+
+모듈화를 하더라도 서블릿 내의 내용은 계속해서 길어질 수 밖에 없다
+
+기능의 단위를 메소드가 아닌 클래스로 구분하여 개발하는 방법을 커맨드 패턴이라고 한다
+
+
+커맨드 패턴이란?
+하나의 명령어를 하나의 클래스에서 처리하도록 구현하는 패턴
+
+
+발생할 수 있는 문제점
+
+클래스는 프로그램이 아니므로 객체로 생성하여 사용해야 한다
+
+그래서 커맨드 패턴을 적용하기 위해서는 이 기법을 사용해야 한다.
+
+
+커맨드 패턴에 의한 로직처리 분리
+
+CommandHandler 추상메소드로 프로세스 하나를 제시
+
+ListHandler
+
+WriteFromHandler
+
+모두 커맨드의 추상메소드를 상속받아 같은 메소드를 사용할 수 있음
+
+
+스트럿츠는 액션이라는 이름으로 접미어를 사용
+스프링은 컨트롤러라는 이름으로 접미어를 사용
+
+
+
+이전 animal 강의 내용
+
+animal .crySound();
+	.getBaby();
+
+dog
+cat
+duck 
+
+애니멀이라는 이름으로 세가지 모두 관리할 수 있었다.

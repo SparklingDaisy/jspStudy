@@ -1,0 +1,3 @@
+<jsp:useBean id="idao" class="com.yong.imggallery.ImgGalleryDAO" scope="session"></jsp:useBean>
+
+세션으로 잡아줌으로써 자원을 조금 더 줄여줄 수 있음
