@@ -51,10 +51,10 @@ if(dto==null){
 				<td colspan="3"><%=dto.getSubject() %></td>
 			</tr>
 			<tr height="250">
-				<td colspan="4"><%=dto.getContent() %></td>
+				<td colspan="4"><%=dto.getContent().replaceAll("\n", "<br>") %></td>
 			</tr>
 			<tr>
-				<td colspan="4">목록</td>
+				<td colspan="4"><a href="bbsList.jsp">목록</a>|<a href="bbsReWrite.jsp?subject=<%=dto.getSubject()%>&ref=<%=dto.getRef()%>&lev=<%=dto.getLev()%>&sunbun=<%=dto.getSunbun()%>">답변</a></td>
 			</tr>
 		</table>
 	</article>

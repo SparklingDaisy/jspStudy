@@ -5,6 +5,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="com.yong.imggallery.*" %>
 <jsp:useBean id="idao" class="com.yong.imggallery.ImgGalleryDAO" scope="session"></jsp:useBean>
+
 <%
 String sid=(String)session.getAttribute("sid"); //세션은 오브젝트 이므로 다운캐스팅 필수
 if(sid==null){
@@ -17,6 +18,7 @@ if(sid==null){
 	return; //조건을 쓸 때 밑에 밑에 있는 자바코드가 먼저 번역될 수 있으므로 우선 리턴으로 끊어줌
 }
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,22 +26,27 @@ if(sid==null){
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/myweb/css/mainLayout.css">
 <style>
+
 h2{
 	text-align:center;
 }
+
 table{
 	width:550px;
 	margin:0px auto;
 	border-top:3px double darkblue;
 	border-bottom:3px double darkblue;
 }
+
 table th{
 	background-color:skyblue;
 }
+
 img{
 	width:100px;
 	height:100px;
 }
+
 </style>
 
 <script>

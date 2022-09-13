@@ -16,7 +16,7 @@ String cp_s=request.getParameter("cp");
 if(cp_s==null||cp_s.equals("")){
 	cp_s="1";
 }
-int cp=Integer.parseInt(cp_s); //사용자 현재 페이지 위치
+int cp=Integer.parseInt(cp_s); //사용자 현재 페이지 위치(current page)
 
 int totalPage=totalCnt/listSize+1; //총 페이지 수
 if(totalCnt%listSize==0)totalPage--;

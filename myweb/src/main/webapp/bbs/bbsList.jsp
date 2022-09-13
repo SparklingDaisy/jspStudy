@@ -28,7 +28,7 @@ table thead th{
 </head>
 <%
 int totalCnt=bdao.getTotalCnt(); //실제 디비로부터 가져오는 정보
-int listSize=5; //한 페이지에 보여줄 게시글 수
+int listSize=15; //한 페이지에 보여줄 게시글 수
 int pageSize=5; //한 페이지에 보여줄 페이지 수
 
 String cp_s=request.getParameter("cp");
@@ -42,7 +42,6 @@ if(totalCnt%listSize==0)totalPage--;
 
 int userGroup=cp/pageSize; // 사용자 현재위치에서 보여줄 페이지의 그룹
 if(cp%pageSize==0)userGroup--;
-
 %>
 <body>
 <%@include file="/header.jsp" %>
@@ -108,7 +107,13 @@ if(cp%pageSize==0)userGroup--;
 						%>
 						<tr>
 							<td><%=arr.get(i).getIdx() %></td>
-							<td><a href="bbsContent.jsp?idx=<%=arr.get(i).getIdx()%>"><%=arr.get(i).getSubject() %></td>
+							<td>
+							<%
+							for(int z=0;z<arr.get(i).getLev();z++){
+								out.println("┕");
+							}
+							%>
+							<a href="bbsContent.jsp?idx=<%=arr.get(i).getIdx()%>"><%=arr.get(i).getSubject() %></td>
 							<td><%=arr.get(i).getWriter() %></td>
 							<td><%=arr.get(i).getWritedate() %></td>
 							<td><%=arr.get(i).getReadnum() %></td>
