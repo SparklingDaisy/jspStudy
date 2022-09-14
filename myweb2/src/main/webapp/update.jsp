@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>list.jsp</title>
+<title>Insert title here</title>
 </head>
 <body>
-<h1>list.jsp</h1>
+<h1>update.jsp</h1>
 <h2>결과:<%=request.getAttribute("result") %></h2>
 </body>
 </html>

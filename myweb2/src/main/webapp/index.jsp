@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>index.jsp</title>
 </head>
 <body>
 <h1>메인페이지입니다.</h1>
+<ul>
+	<li><a href="emp.yong">사원관리프로그램(model2)</a></li>
+</ul>
 </body>
 </html>

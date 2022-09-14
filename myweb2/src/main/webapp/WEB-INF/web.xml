@@ -15,6 +15,6 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>yongCont</servlet-name>
-  	<url-pattern>/yong</url-pattern>
+  	<url-pattern>*.yong</url-pattern>
   </servlet-mapping>
 </web-app>
