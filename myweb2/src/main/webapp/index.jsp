@@ -10,6 +10,7 @@
 <h1>메인페이지입니다.</h1>
 <ul>
 	<li><a href="emp.yong">사원관리프로그램(model2)</a></li>
+	<li><a href="bbsList.yong">게시판</a></li>
 </ul>
 </body>
 </html>

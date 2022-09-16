@@ -44,8 +44,7 @@ public class YongController extends HttpServlet{
 			String key=(String)keys.next();
 			//System.out.println(key);
 			String value=prop.getProperty(key); // 지정된 키를 가지는 프로퍼티를, 프로퍼티 리스트로부터 찾습니다.
-			
-			 
+						 
 			try {
 				Class originClass = Class.forName(value); //내가 지정한 문자열의 경로를 실제 클래스 경로로 지정
 				Object obj=originClass.newInstance(); //객체를 만들어주는 기능
@@ -84,7 +83,7 @@ public class YongController extends HttpServlet{
 		}
 		
 		CommandHandler cmd2=cmd.get(type); //예전 Animal과 같음
-		
+
 		String gopage=cmd2.Process(req, resp);
 	
 		//5.전가

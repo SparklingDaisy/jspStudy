@@ -20,6 +20,7 @@
 			</tr>
 		</thead>
 		<tbody>
+		<c:set var="arr" value="${requestScope.arr }"></c:set>
 		<%
 		ArrayList<EmpDTO> arr=(ArrayList)request.getAttribute("arr");
 		if(arr==null||arr.size()==0){

@@ -18,5 +18,13 @@ String addr=(String)request.getAttribute("addr");
 <h3>전화번호:<%=tel %></h3>
 <h3>아이디:<%=id %></h3>
 <h3>주소:<%=addr %></h3>
+
+<!--  el방식 -->
+
+<h3>이름:${param.name}</h3>
+<h3>전화번호:${param.tel}</h3>
+<h3>아이디: ${requestScope.id}</h3>
+<h3>주소: ${requestScope.addr}</h3>
+
 </body>
 </html>
