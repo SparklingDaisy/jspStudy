@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="messageBean" class="yong.hello.MessageBeanImple">
+		<constructor-arg>
+			<value>스프링</value>
+		</constructor-arg>
+		<property name="greeting">
+			<value>안녕하세요.</value>
+		</property>
+		<property name="out">
+			<ref bean="dbOutput"/>
+		</property>
+	</bean>	
+	<bean id="dbOutput" class="yong.hello.DbDataOutput"></bean>		
+	<bean id="fileOutput" class="yong.hello.FileDataOutput">
+		<property name="filename" value="out.txt"></property>
+	</bean>
+</beans>

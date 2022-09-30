@@ -3,14 +3,18 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="com.yong.bbs.*" %>
+
 <jsp:useBean id="bdao" class="com.yong.bbs.BbsDAO" scope="session"></jsp:useBean>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/myweb/css/mainLayout.css">
+
 <style>
+
 h2{
 	text-align:center;
 }
@@ -26,6 +30,7 @@ table thead th{
 }
 </style>
 </head>
+
 <%
 int totalCnt=bdao.getTotalCnt(); //실제 디비로부터 가져오는 정보
 int listSize=15; //한 페이지에 보여줄 게시글 수
@@ -43,6 +48,7 @@ if(totalCnt%listSize==0)totalPage--;
 int userGroup=cp/pageSize; // 사용자 현재위치에서 보여줄 페이지의 그룹
 if(cp%pageSize==0)userGroup--;
 %>
+
 <body>
 <%@include file="/header.jsp" %>
 <section>

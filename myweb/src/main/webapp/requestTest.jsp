@@ -16,6 +16,6 @@
 <h2>사용자의 접속방식:<%=request.getMethod() %></h2>
 <h2>사용자의 접속페이지:<%=request.getRequestURI() %></h2>
 <h2>사용자의 프로젝트:<%=request.getContextPath() %></h2>
-<h2>현재 위치의 절대경로:<%=request.getRealPath("/") %></h2>
+<h2>해당 프로젝트 까지의 절대경로:<%=request.getRealPath("/") %></h2>
 </body>
 </html>
