@@ -48,6 +48,7 @@ ${sessionScope.sname }님 로그인중..|
 	<li><a href="model/modelOk.do">모델테스트(Map반환)</a></li>
 	<li><a href="model/modelOk.do">모델테스트(Model반환)</a></li>
 	<li><a href="animeA.do">애니메이션 검색</a></ul>
+	<li><a href="joaStore_combo.do">조아스토어</a></li>
 </body>
 
 </html>

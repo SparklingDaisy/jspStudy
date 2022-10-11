@@ -5,10 +5,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script>
-	function openIdCheck(){
-		window.open('idCheckForm.do','idCheck','width=400,height=300');
+<script type="text/javascript" src="js/httpRequest.js"></script>
+<script type="text/javascript">
+function openIdCheck(){
+	window.open('idCheckForm.do','idCheck','width=400,height=300');
+}
+function idCheck(){
+	var id=document.memberJoin.id.value;
+	var param='id='+id;
+	sendRequest('idCheck.do',param,idCheckResult,'GET');
+}
+function idCheckResult(){
+		if(XHR.readyState==4){
+			if(XHR.status==200){
+				var data=XHR.responseText;
+				document.all.idmsg.innerHTML=data;
+			}
+		}
 	}
+}
 </script>
 </head>
 <body>
@@ -19,7 +34,7 @@
 	<ul>
 		<li><label>ID</label>
 			<input type="text" name="id">
-			<input type="button" value="중복검사" onclick="openIdCheck()">
+			<input type="button" value="중복검사" onclick="idCheck()"><div id="idmsg" style="color:red"></div>
 		</li>
 		<li><label>Password</label>
 			<input type="password" name="pwd">

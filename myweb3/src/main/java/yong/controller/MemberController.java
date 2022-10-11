@@ -61,16 +61,19 @@ public class MemberController {
 	public ModelAndView idCheckSubmit(MemberDTO dto) { //String id로 받았다면, 스트링의 편의성으로 봐야한다. 폼에 있는 변수랑 같은 이름으로 선언하면 가져오게 편의성을 추가해주었다.
 		boolean result=memberDao.idCheck(dto.getId());
 		ModelAndView mav=new ModelAndView();
+		String msg=result?dto.getId()+"는 이미 가입되어 있습니다.":dto.getId()+"는 사용가능한 아이디입니다.";
+		mav.addObject("msg",msg);
+		mav.setViewName("member/idCheck_ok2");
 		
-		if(result) {
-			mav.addObject("msg",dto.getId()+"는 이미 가입되어있는 ID입니다.");
-			mav.addObject("gopage","idCheckForm.do");
-			mav.setViewName("member/memberMsg");
-		}else {
-			mav.addObject("msg",dto.getId()+"는 사용가능한 ID입니다.");
-			mav.addObject("userid",dto.getId());
-			mav.setViewName("member/idCheck_ok");
-		}
+//		if(result) {
+//			mav.addObject("msg",dto.getId()+"는 이미 가입되어있는 ID입니다.");
+//			mav.addObject("gopage","idCheckForm.do");
+//			mav.setViewName("member/memberMsg");
+//		}else {
+//			mav.addObject("msg",dto.getId()+"는 사용가능한 ID입니다.");
+//			mav.addObject("userid",dto.getId());
+//			mav.setViewName("member/idCheck_ok");
+//		}
 		return mav;
 	}
 
@@ -132,4 +135,5 @@ public class MemberController {
 		mav.setViewName("redirect:/index.do");
 		return mav;
 	}
+
 }
