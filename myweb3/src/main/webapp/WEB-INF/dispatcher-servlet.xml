@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd">
    
    <!-- configs -->
    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></bean>
@@ -10,55 +14,8 @@
          <value>104857600</value>
       </property>
    </bean>
-   
-   <!-- mybatis configs -->
-   <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-      <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
-      <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
-      <property name="username" value="scott"></property>
-      <property name="password" value="1234"></property>
-   </bean>
-   <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-      <property name="dataSource" ref="dataSource"></property>
-   </bean>
-   <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
-      <property name="dataSource" ref="dataSource"></property>
-      <property name="configLocation" value="classpath:/mybatis-config.xml"></property>
-   </bean>
-   <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-      <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean">
-      </constructor-arg>
-   </bean>
-   
-   <!-- controllers -->
-   <bean id="joaStoreController" class="joa.controller.JoaStoreController"></bean>
-   <bean id="bbsController" class="yong.controller.BbsController"></bean>
-   <bean id="empController" class="yong.controller.EmpController"></bean>
-   <bean id="fileManagerController" class="yong.controller.FileManagerController"></bean>
-   <bean id="helloController" class="yong.controller.HelloController"></bean>
-   <bean id="memoController" class="yong.controller.MemoController"></bean>
-   <bean id="indexController" class="yong.controller.IndexController"></bean>
-   <bean id="memberController" class="yong.controller.MemberController"></bean>
-   <bean id="orderController" class="yong.controller.OrderController"></bean>
-   <bean id="paramController" class="yong.controller.ParamController"></bean>
-   <bean id="viewTestController" class="yong.controller.ViewTestController"></bean>
-   <bean id="modelTestController" class="yong.controller.ModelTestController"></bean>
-   <bean id="animeController" class="yong.controller.AnimeController"></bean>
-   
-   <!-- daos -->
-   <bean id="bbsDao" class="yong.bbs.model.BbsDAOImple">
-		<constructor-arg>
-   			<ref bean="sqlSessionTemplate"/>
-   		</constructor-arg>
-   </bean>
-   <bean id="memoDao" class="yong.memo.model.MemoDAOImple"></bean>
-   <bean id="memberDao" class="yong.member.model.MemberDAOImple"></bean>
-   <bean id="empDao" class="yong.emp.model.EmpDAOImple">
-   		<constructor-arg>
-   			<ref bean="sqlSessionTemplate"/>
-   		</constructor-arg>
-   </bean>
-   
+   <context:component-scan base-package="yong"></context:component-scan>
+
    <!-- services -->
    <bean id="bbsService" class="yong.bbs.model.BbsServiceImple">
    	<constructor-arg>
@@ -68,6 +25,7 @@
    
    <!-- views -->
    <bean id="yongDown" class="yong.view.DownloadView"></bean>
+   <bean id="yongJson" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"></bean>
    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
       <property name="order" value="0"></property>
    </bean>

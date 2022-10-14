@@ -22,6 +22,10 @@ ${sessionScope.sname }님 로그인중..|
 </c:if>
 <h1>메인페이지입니다.</h1>
 <ul>
+	<c:url var="jsonUrl" value="jsonTest.do"> <!-- 원래 이렇게 안하고 자바스크립트로 하는거임 -->
+		<c:param name="jsonData">{"name":"홍길동","age":"20","addr":"seoul"}</c:param>
+	</c:url>
+	<li><a href="${jsonUrl}">json파라미터</a></li>
 	<li><a href="bbsList.do">마지막 게시판</a></li>
 	<li><a href="emp.do">마지막 사원관리 프로그램</a></li>
 	<li><a href="imgList.do">spring 이미지 게시판</a></li>

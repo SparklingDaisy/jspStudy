@@ -1,5 +1,6 @@
 package yong.controller;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -47,7 +48,7 @@ public class EmpController {
 		List<EmpDTO> list=empDao.empList();
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("list",list);
-		mav.setViewName("emp/empList");
+		mav.setViewName("yongJson");
 		return mav;
 	}
 	
@@ -77,5 +78,14 @@ public class EmpController {
 		mav.addObject("msg",msg);
 		mav.setViewName("emp/empMsg");
 		return mav;
+	}
+	
+	@RequestMapping("/jsonTest.do")
+	public String jsontTest(String jsonData) {
+		JSONObject jobj=new JSONObject(jsonData);
+		System.out.println("이름"+jobj.get("name"));
+		System.out.println("나이"+jobj.get("age"));
+		System.out.println("주소"+jobj.get("addr"));
+		return "hello";
 	}
 }
